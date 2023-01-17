@@ -24,18 +24,6 @@ export class FaceSnapComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddSnap() {
-    if (!this.isSnapped){
-      this.faceSnapsService.snapFaceSnap(this.faceSnap.id, 'snap');
-      this.isSnapped = true;
-      this.snapButtonText = "Oops, unSnap!";
-    } else {
-      this.faceSnapsService.snapFaceSnap(this.faceSnap.id, 'unsnap');
-      this.isSnapped = false;
-      this.snapButtonText = "Oh Snap!";
-    }
-  }
-
   onViewFaceSnap() {
     this.router.navigateByUrl(`facesnaps/${this.faceSnap.id}`);
   }

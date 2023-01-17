@@ -1,4 +1,4 @@
-<div class="face-snap-card" [ngClass]="{ snapped: isSnapped == true}">
+<div class="face-snap-card" *ngIf="faceSnap$ | async as faceSnap" [ngClass]="{ snapped: snapButtonText === 'Oops, unSnap!'}">
     <h2>{{ faceSnap.title | titlecase }}</h2>
     <a routerLink="/facesnaps">Back</a> <!--écrire la route avec un "/" pour dire que c'est le chemin absolu -->
     <p>Mis en ligne le {{ faceSnap.createdDate | date: 'd MMMM yyyy à HH:mm' }}</p>
@@ -6,7 +6,7 @@
     <p>{{ faceSnap.description }}</p>
     <p *ngIf="faceSnap.location">Photo prise à {{ faceSnap.location }}</p>
     <p>
-        <button (click)="onAddSnap()">{{snapButtonText}}</button>
+        <button (click)="onAddSnap(faceSnap.id)">{{snapButtonText}}</button>
         <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">🤌 {{ faceSnap.snaps }}</span>
     </p>
 </div>
