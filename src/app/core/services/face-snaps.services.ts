@@ -74,22 +74,6 @@ export class FaceSnapsService {
     }
 
     addFaceSnap(formSnap: { title: string, description: string, imageUrl: string, location?: string }): Observable<FaceSnap> {
-        // let newFaceSnap: FaceSnap;
-        // let faceSnaps$: Observable<FaceSnap[]> = this.getAllFaceSnaps();
-        // faceSnaps$.subscribe({
-        //     next: ((faceSnapList) => { 
-        //         newFaceSnap = {
-        //         id: faceSnapList[length - 1].id + 1,
-        //         title: formSnap.value.title,
-        //         description: formSnap.value.description,
-        //         imageUrl: formSnap.value.imageUrl,
-        //         createdDate: new Date(),
-        //         snaps: 0,
-        //         location: formSnap.value.location}
-        //     }),
-        //     error: (msg) => "Erreur FaceSnap!"
-        // }
-        // );
         return this.getAllFaceSnaps().pipe(
             map(facesnaps => [...facesnaps].sort((a,b) => a.id - b.id)),
             map(sortedFacesnaps => sortedFacesnaps[sortedFacesnaps.length - 1]),
@@ -103,8 +87,7 @@ export class FaceSnapsService {
                 'http://localhost:3000/facesnaps',
                 newFacesnap)
             )
-        )
-        
+        )      
     }
 
     // snapById(snapId: number): void {
